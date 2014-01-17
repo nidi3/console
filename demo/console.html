@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<body>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="../src/web-console.js"></script>
+<style>
+    .console {
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+
+    .console div div, .console div span {
+        height: 20px;
+    }
+</style>
+
+<div id="c" style="border: 1px solid black; width: 500px; height: 500px;">
+</div>
+<button onclick="c.newLine()">newline</button>
+text<input id="v">
+color<input id="color">
+<button onclick="c.write($('#v').val(),{color:$('#color').val()})">write</button>
+<button onclick="a.write('')">w1</button>
+<button onclick="a.write('bla')">w2</button>
+<button onclick="a.write('bla\x1b[32mblu')">w3</button>
+<button onclick="a.write('bla\x1b[32;1mblu\x1b[3;36;22mble\x1b[9;47mpop')">w3</button>
+<button onclick="b.write('bla\nbluxxx\byyy\x08')">w3</button>
+<button onclick="a.write('bla\nbluxxx\byyy\x08')">w3</button>
+
+<script>
+    var c = new cons.Console($('#c'), 80);
+    var b = new cons.Basic(c);
+    var a = new cons.Ansi(c);
+</script>
+
+</body>
+</html>

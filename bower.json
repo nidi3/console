@@ -1,0 +1,24 @@
+{
+    "name": "web-console",
+    "version": "1.0.0",
+    "homepage": "https://github.com/nidi3/console",
+    "authors": [
+        "Stefan Niederhauser <ghuder5@gmx.ch>"
+    ],
+    "description": "A simple console for the web",
+    "main": "src/web-console.js",
+    "dependencies": {
+        "jquery": "~1.10.0"
+    },
+    "keywords": [
+        "console"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
