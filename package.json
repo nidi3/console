@@ -1,24 +1,30 @@
 {
-    "name": "web-console",
-    "title": "A simple console for the web",
-    "version": "0.9.0",
-    "private": false,
-    "author": {
-        "name": "Stefan Niederhauser <ghuder5@gmx.ch>",
-        "company": ""
-    },
-    "devDependencies": {
-        "grunt": "0.4.1",
-        "grunt-contrib-clean": "~0.5",
-        "grunt-bower-task": "~0.3",
-        "karma": "~0.9",
-        "karma-jasmine":"~0.1"
-    },
-    "scripts": {
-        "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
-    },
-    "engines": {
-        "node": ">0.10.5",
-        "npm": ">1.2.18"
-    }
+  "name": "web-console",
+  "title": "A simple console for the web",
+  "version": "0.9.0",
+  "private": false,
+  "author": {
+    "name": "Stefan Niederhauser <ghuder5@gmx.ch>",
+    "company": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nidi3/web-console"
+  },
+  "devDependencies": {
+    "grunt": "0.4.1",
+    "grunt-contrib-clean": "~0.5",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-bower-task": "~0.3",
+    "karma": "~0.10.9",
+    "karma-jasmine": "~0.1.5",
+    "karma-coverage": "~0.1.4"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
+  },
+  "engines": {
+    "node": ">0.10.5",
+    "npm": ">1.2.18"
+  }
 }

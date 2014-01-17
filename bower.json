@@ -6,7 +6,7 @@
         "Stefan Niederhauser <ghuder5@gmx.ch>"
     ],
     "description": "A simple console for the web",
-    "main": "src/web-console.js",
+    "main": "dist/web-console.js",
     "dependencies": {
         "jquery": "~1.10.0"
     },

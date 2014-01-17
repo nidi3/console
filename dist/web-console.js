@@ -1,8 +1,18 @@
-/*global $*/
 var cons = (function () {
-
-
-
+    var A = {
+        last: function (array) {
+            return array[array.length - 1];
+        },
+        pushTo: function (value, array) {
+            array.push(value);
+            return value;
+        },
+        unshift: function (array, value) {
+            array.unshift(value);
+            return array;
+        }
+    };
+    /*global A*/
     function Model(columns) {
         var m = [], currentX;
 
@@ -34,9 +44,10 @@ var cons = (function () {
             m = [];
             currentX = 0;
         };
-
     }
 
+
+    /*global $*/
     function View(div, columns, rows) {
         var d, lineHeight, currentLine,
             viewDiv = $(div);
@@ -98,6 +109,8 @@ var cons = (function () {
         init();
     }
 
+
+    /*global Model,View*/
     function Console(div, columns, rows) {
         var self = this,
             w = columns || 80,
@@ -143,6 +156,7 @@ var cons = (function () {
         };
     }
 
+    /*global Basic*/
     function Ansi(console) {
         var basic = new Basic(console),
             attr = {bright: false},
@@ -244,10 +258,12 @@ var cons = (function () {
 
     }
 
+
     return {
         Console: Console,
         Basic: Basic,
         Ansi: Ansi
     };
+
 
 }());
