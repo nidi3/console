@@ -9,10 +9,10 @@
     },
     "devDependencies": {
         "grunt": "0.4.1",
-        "grunt-contrib-clean": "0.5.0",
-        "grunt-bower-task": "0.3.2",
-        "karma": "~0.8",
-        "karma-jasmine":"~0.1.5"
+        "grunt-contrib-clean": "~0.5",
+        "grunt-bower-task": "~0.3",
+        "karma": "~0.9",
+        "karma-jasmine":"~0.1"
     },
     "scripts": {
         "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
