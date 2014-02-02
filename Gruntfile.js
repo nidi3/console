@@ -9,11 +9,19 @@ module.exports = function (grunt) {
                 banner: 'var cons = (function () {',
                 footer: 'return { Console: Console, Basic: Basic, Ansi: Ansi }; }());'
             }
+        },
+
+        watch: {
+            dist: {
+                files: 'src/*.js',
+                tasks: 'dist'
+            }
         }
 
     });
 
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', []);
     grunt.registerTask('dist', ['concat']);

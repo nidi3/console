@@ -1,10 +1,11 @@
 /*global Model,View*/
-function Console(div, columns, rows) {
+function Console(div, config) {
     var self = this,
-        w = columns || 80,
-        h = rows || 25,
-        model = new Model(w),
-        view = new View(div, w, h);
+        c = config || {},
+        columns = c.columns || 80,
+        rows = c.rows || 0,
+        model = new Model(columns),
+        view = new View(div, columns, rows, c);
 
     this.newLine = function () {
         model.newLine();

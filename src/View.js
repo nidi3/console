@@ -1,7 +1,14 @@
 /*global $*/
-function View(div, columns, rows) {
+function View(div, columns, rows, config) {
     var d, lineHeight, currentLine,
-        viewDiv = $(div);
+        viewDiv = $(div),
+        conf = $.extend({},
+            {
+                color: 'black',
+                backgroundColor: 'white',
+                fontStyle: 'normal',
+                textDecoration: 'none'
+            }, config);
 
     function dup(s, n) {
         var i, res = '';
@@ -14,12 +21,26 @@ function View(div, columns, rows) {
     function init() {
         var widthTest, heightTest;
         viewDiv.addClass('console');
-        d = $('<div/>').css('font-family', 'monospace').css('white-space', 'pre').appendTo(viewDiv);
-        widthTest = $('<span />').css('visibility', 'hidden').html(dup('w', columns)).appendTo(d);
-        heightTest = $('<div />').css('visibility', 'hidden').appendTo(d);
+        d = $('<div/>')
+            .css('font-family', 'monospace')
+            .css('white-space', 'pre')
+            .appendTo(viewDiv);
+
+        widthTest = $('<span />')
+            .css('visibility', 'hidden')
+            .html(dup('w', columns))
+            .appendTo(d);
+
+        heightTest = $('<div />')
+            .css('visibility', 'hidden')
+            .appendTo(d);
+
         lineHeight = heightTest.height();
-        viewDiv.css('width', widthTest.width());
-        viewDiv.css('height', lineHeight * rows);
+        viewDiv.css('width', widthTest.width())
+            .css('height', lineHeight * rows)
+            .css('overflow-y', 'scroll')
+            .css('background-color', config.backgroundColor);
+
         widthTest.remove();
         heightTest.remove();
     }
@@ -28,13 +49,17 @@ function View(div, columns, rows) {
         viewDiv.scrollTop(viewDiv[0].scrollHeight);
     }
 
-    function write(p) {
+    function attr(part, name) {
+        return part.attr[name] || conf[name];
+    }
+
+    function write(part) {
         $('<span/>')
-            .css('color', p.attr.color || 'black')
-            .css('background-color', p.attr.backgroundColor || 'white')
-            .css('font-style', p.attr.fontStyle || 'normal')
-            .css('text-decoration', p.attr.textDecoration || 'none')
-            .html(p.text)
+            .css('color', attr(part, 'color'))
+            .css('background-color', attr(part, 'backgroundColor'))
+            .css('font-style', attr(part, 'fontStyle'))
+            .css('text-decoration', attr(part, 'textDecoration'))
+            .html(part.text)
             .appendTo(currentLine);
     }
 
@@ -44,13 +69,13 @@ function View(div, columns, rows) {
         scrollBottom();
     };
 
-    this.writeParts = function (p) {
+    this.writeParts = function (part) {
         var i;
-        for (i = 0; i < p.length - 1; i += 1) {
-            write(p[i]);
+        for (i = 0; i < part.length - 1; i += 1) {
+            write(part[i]);
             this.newLine();
         }
-        write(p[i]);
+        write(part[i]);
     };
 
     this.clear = function () {

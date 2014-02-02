@@ -16,6 +16,7 @@
     "grunt-contrib-clean": "~0.5",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-bower-task": "~0.3",
+    "grunt-contrib-watch": "~0.5.3",
     "karma": "~0.10.9",
     "karma-jasmine": "~0.1.5",
     "karma-coverage": "~0.1.4"
